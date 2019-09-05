@@ -21,8 +21,7 @@ setup(
     description='sysPass API client for Python',
     long_description=LONG_DESCRIPTION,
     install_requires=[
-        'requests',
-        'typing'
+        'requests'
     ],
     test_suite='setup.client_test_suite',
     tests_require=[],
