@@ -1,0 +1,36 @@
+language: python
+
+dist: xenial  # required for Python >= 3.7
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+  - "$HOME/.cache/pip"
+
+python:
+  - "3.4"
+  - "3.5"
+  - "3.6"      # current default Python on Travis CI
+  - "3.7"
+
+install:
+  - "./.travis/install.sh"
+
+script:
+  - "./.travis/run.sh"
+
+#deploy:
+#  provider: releases
+#  api_key:
+#    secure: *
+#  file:
+#    - dist/*.whl
+#    - dist/*.tar.gz
+#  file_glob: true
+#  on:
+#    repo: syspass/syspass-api-client-python
+#    tags: true
+#  skip_cleanup: true
