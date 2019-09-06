@@ -9,3 +9,21 @@ It has all the methods currently implemented (as of sysPass v3.1) and can be eas
 ### Installation
 
 ```$ pipenv install syspass_api_client```
+
+### Usage
+
+The following environment variables could be used:
+
+* SYSPASS_API_URL
+* SYSPASS_API_TOKEN
+* SYSPASS_API_TOKEN_PASS
+
+```python
+from syspass_api_client import api, account
+
+o_api = api.JsonRpcApi()
+o_account = account.Account(o_api)
+
+for account_data in o_account.search():
+    print(account_data)
+```
