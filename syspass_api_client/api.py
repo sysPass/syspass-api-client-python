@@ -19,8 +19,18 @@ class JsonRpcApi:
         """
         self.url = url
         self.auth_token = auth_token
+        self.tls_verify = self._get_tls_verify()
 
         self._get_settings_from_env()
+
+    @staticmethod
+    def _get_tls_verify() -> bool:
+        from_env = os.environ.get("SYSPASS_TLS_VERIFY")
+
+        if from_env and from_env == "1":
+            return True
+
+        return False
 
     def _get_settings_from_env(self):
         """
@@ -76,7 +86,7 @@ class JsonRpcApi:
 
         r = requests.post(self.url,
                           json=self._build_json_rpc(method, params),
-                          verify=False)
+                          verify=self.tls_verify)
 
         r.raise_for_status()
 

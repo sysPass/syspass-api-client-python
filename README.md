@@ -17,6 +17,7 @@ The following environment variables could be used:
 * SYSPASS_API_URL
 * SYSPASS_API_TOKEN
 * SYSPASS_API_TOKEN_PASS
+* SYSPASS_TLS_VERIFY
 
 ```python
 from syspass_api_client import api, account
