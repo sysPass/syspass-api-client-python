@@ -6,21 +6,19 @@ branches:
   only:
     - master
 
-cache:
-  directories:
-  - "$HOME/.cache/pip"
+cache: pip
 
 python:
-  - "3.4"
   - "3.5"
   - "3.6"      # current default Python on Travis CI
   - "3.7"
 
 install:
-  - "./.travis/install.sh"
+  - make
 
 script:
-  - "./.travis/run.sh"
+  - make test-readme
+  - make ci
 
 #deploy:
 #  provider: releases
