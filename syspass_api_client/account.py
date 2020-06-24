@@ -166,6 +166,22 @@ class Account(api.ApiBase):
 
         return data["result"]
 
+    def edit_pass(self, account_id: int, password: str) -> dict:
+        """
+        :param account_id: Account's ID
+        :param pass: Account's new password
+        :return: a dictionary with the account's data and password change operation
+        """
+        params = {
+            "tokenPass": self.token_pass,
+            "id": account_id,
+            "pass": password
+        }
+
+        data = self.api.call_api(method=METHODS["edit_pass"], params=params)
+
+        return data["result"]
+
     def delete(self, account_id: int):
         """
         :param account_id: Account's ID to delete
